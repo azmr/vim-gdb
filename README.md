@@ -3,10 +3,12 @@
 
 
 ## Installation
+
 As with most other plugins, [pathogen](https://github.com/tpope/vim-pathogen) and [vundle](https://github.com/VundleVim/Vundle.vim) should work fine.
 
 
 ## Usage
+
 ```vim
 :QuickGDB(args)
 ```
@@ -41,6 +43,10 @@ the breakpoint will be set at that line number in the file corresponding
 to that buffer
 
 If no number is appended, you will be prompted to interactively input one.
+
+If no number is given when prompted, or the number at any point is given
+as `0`, a breakpoint will be set at the current line in that buffer (which
+you can see with `:ls`).
 
 
 #### Files

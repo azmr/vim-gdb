@@ -39,12 +39,18 @@ function! QuickGDB(...)
 					let l:bufname=l:buftest[3]
 					" echom l:bufname
 					let l:bufline=l:buftest[5]
-					" echom l:bufline
+					" prompt if no line number given
 					if l:bufline ==# '' && type(l:bufline) ==# type('')
 						let l:bufline=input('Enter a line number for buffer ' .  l:bufname . " or leave blank for current line in that buffer\r> ")
 					endif
 
 					execute 'b ' . l:bufname
+
+					" if line number is 0, set line number to current line of that buffer
+					if l:bufline ==# 0
+						let l:bufline=line('.')
+					endif
+
 					call add(l:gdbargs, '-ex "b ' . expand('%:p') . ':' . l:bufline . '"')
 
 					" keeps original % and #

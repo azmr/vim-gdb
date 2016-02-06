@@ -1,0 +1,93 @@
+*gdb.txt* Open GDB from vim with set breakpoints (more to come)
+
+(only tested with gVim on Windows so far)
+
+===============================================================================
+CONTENTS	*gdb-contents*
+
+	1. Installation .................... |gdb-installation|
+	2. Usage ........................... |gdb-usage|
+		2.1 Argument format ............ |gdb-arg-format|
+			2.1.1 Line Numbers ......... |gdb-line-numbers|
+			2.1.2 Buffers .............. |gdb-buffers|
+			2.1.3 Files ................ |gdb-files|
+		2.2 Setup ...................... |gdb-setup|
+	3. Credits ......................... |gdb-credits|
+
+
+================================================================================
+1. Installation		*gdb-installation*
+
+As with most other plugins, [pathogen](https://github.com/tpope/vim-pathogen) and [vundle](https://github.com/VundleVim/Vundle.vim) should work fine.
+
+
+================================================================================
+2. Usage	*gdb-usage*
+
+	:QuickGDB(args)
+
+This will open GDB in a console and set breakpoints at the args.
+
+If no args are given, a breakpoint will be set at the current line.
+
+
+--------------------------------------------------------------------------------
+2.1. Argument format	*gdb-arg-format*
+
+You can input as many arguments as you like up to 20 (the max Vim allows).
+
+
+--------------------------------------------------------------------------------
+2.1.1. Line Numbers	*gdb-line-numbers*
+
+	:QuickGDB(24, 125, 76)
+
+This will set breakpoints at the stated lines in the current file.
+
+
+--------------------------------------------------------------------------------
+2.1.2. Buffers	*gdb-buffers*
+
+	:QuickGDB('b#', 'buf 6', 'buffer main:32')
+
+Assuming the buffer name is valid as per Vim's normal rules,
+if a number is appended to the buffer name in the format `:123`,
+the breakpoint will be set at that line number in the file corresponding
+to that buffer.
+
+If no number is appended, you will be prompted to interactively input one.
+
+If no number is given when prompted, or the number at any point is given
+as `0`, a breakpoint will be set at the current line in that buffer (which
+you can see with `:ls`).
+
+
+--------------------------------------------------------------------------------
+2.1.3. Files	*gdb-files*
+
+```vim
+:QuickGDB('E:/Documents/Code/Rust/cool_program/src/main.rs:32', 'subfolder/code.rs:10')
+```
+
+The file can be given in an absolute form or relative to the current working directory.
+
+The line number must be appended.
+
+
+--------------------------------------------------------------------------------
+2.2. Setup		*gdb-setup*
+
+You may find it helpful to include a mapping in your `.vimrc` such as the following:
+```vim
+" call QuickGDB with the option of arguments
+nnoremap <leader>g :call QuickGDB()<left>
+```
+
+
+================================================================================
+3. Credits		*gdb-credits*
+
+Created by Andrew Reece
+Helped in large part by 'Learn Vimscript the Hard Way' by Steve Losh
+
+	vi:ft=help:tw=80

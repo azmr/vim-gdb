@@ -69,3 +69,9 @@ You may find it helpful to include a mapping in your `.vimrc` such as the follow
 " call QuickGDB with the option of arguments
 nnoremap <leader>g :call QuickGDB()<left>
 ```
+
+
+## Credits
+
+Created by Andrew Reece
+Helped in large part by 'Learn Vimscript the Hard Way' by Steve Losh

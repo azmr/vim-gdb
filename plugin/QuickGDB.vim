@@ -58,7 +58,7 @@ function! QuickGDB(...)
 				endif
 
 			else
-				echom 'GdbBreak: Inappropriate argument; must be a number or a string'
+				echom 'QuickGDB: Inappropriate argument; must be a number or a string'
 				return
 			endif
 		endfor
@@ -80,7 +80,8 @@ function! QuickGDB(...)
 		" assumes Windows TODO: make platform independent
 		let l:debugtarget=l:cratepath . 'target/debug/' . l:cratename . '.exe'
 	else
-		echom 'GdbBreak: not sure what to do with the filetype ' . &filetype
+		echom 'QuickGDB: not sure what to do with the filetype ' . &filetype
+		return
 	endif
 
 	execute 'cd '. l:owd

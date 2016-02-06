@@ -1,4 +1,6 @@
 # gdb.vim
+Open GDB from vim with set breakpoints (more to come)
+
 (only tested with gVim on Windows so far)
 
 
@@ -22,7 +24,7 @@ If no args are given, a breakpoint will be set at the current line.
 You can input as many arguments as you like up to 20 (the max Vim allows).
 
 
-#### Numbers
+#### Line Numbers
 
 ```vim
 :QuickGDB(24, 125, 76)
@@ -58,3 +60,12 @@ you can see with `:ls`).
 The file can be given in an absolute form or relative to the current working directory.
 
 The line number must be appended.
+
+
+### Setup
+
+You may find it helpful to include a mapping in your `.vimrc` such as the following:
+```vim
+" call QuickGDB with the option of arguments
+nnoremap <leader>g :call QuickGDB()<left>
+```

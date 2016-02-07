@@ -90,7 +90,8 @@ function! QuickGDB(...)
 		return
 	endif
 
-	execute 'cd '. l:owd
-
+	pwd
 	execute 'silent !gdb -q ' . l:debugtarget . ' ' . join(l:gdbargs)
+
+	execute 'cd ' . l:owd
 endfunction
